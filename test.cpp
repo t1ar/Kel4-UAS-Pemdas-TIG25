@@ -3,7 +3,7 @@
 // TI-G
 
 #include <iostream>
-#include <fstream>
+#include <fstream> // ubah oi ubahhhh
 #include <string>
 using namespace std;
 
@@ -46,5 +46,13 @@ int main() {
         Item[i].Nama = Nama_Item;
         Item[i].Jumlah = stoi(Jumlah);
     }
-    stock.close(); //dont forget to close file
+
+
+
+
+
+
+    //dont forget to close file
+    profit.close();
+    stock.close();
 }
