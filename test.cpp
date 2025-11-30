@@ -10,9 +10,10 @@ using namespace std;
 
 // declare harga
 const int MAX = 9,
-          Harga_User [MAX] = {},
-          Harga_Seller [MAX] = {};
+          Harga_Buyer [MAX] = {},
+          Harga_Stock [MAX] = {};
 
+int Wallet = 20000;
 
 // declare struct
 struct structItem {
@@ -23,11 +24,21 @@ struct structItem {
 // declare functions
 
 
-int Beli() {
-    
+void Beli(int pilihan) {
+    pilihan--;
+    if (Item[pilihan].Jumlah == 0){
+        cout << "No stock.\n\n";
+        return;
+    }
+    if (Wallet < Harga_Buyer[pilihan]){
+        cout << "Not enough money.\n\n";
+        return;
+    }
+    Item[pilihan].Jumlah--;
+    Wallet -= Harga_Buyer[pilihan];
 }
 
-void Menu(int pilihan) {
+void Menu() {
 
 }
 // main function
@@ -45,14 +56,6 @@ int main() {
         getline(stock, Jumlah);   //                   Jumlah
         Item[i].Nama = Nama_Item;
         Item[i].Jumlah = stoi(Jumlah);
-    }
-
-
-
-
-
-
-    //dont forget to close file
-    profit.close();
+    } //dont forget to close file
     stock.close();
 }
