@@ -28,7 +28,7 @@ void saveFile(string filename){
 
 
 
-    
+
 }
 
 void viewStock(){ //data is stored in struct not file remember, oh and at the bottom give the line "0. Exit" 
