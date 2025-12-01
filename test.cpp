@@ -100,12 +100,3 @@ int main() {
     //give exit message
     
 }
-
-
-
-
-
-    //dont forget to close file
-    profit.close();
-    stock.close();
-}
