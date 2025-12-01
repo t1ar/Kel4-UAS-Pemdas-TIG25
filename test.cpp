@@ -24,12 +24,6 @@ struct structItem {
 
 
 // declare functions
-void saveFile(string filename){
-
-
-
-
-}
 
 void viewStock(){ //data is stored in struct not file remember, oh and at the bottom give the line "0. Exit" 
                  
@@ -65,39 +59,47 @@ void Beli(int pilihan) {
 void Menu() {
     int pilihan;
                  //entry message
-
+                 //user's wallet
 
 
     cin >> pilihan;
     switch (pilihan)
     {
-    case 0:
+    case 0: //exit
         return;
         break;
-    case 1:
+    case 1: //buy
         viewStock();
         cin >> pilihan;
         Beli(pilihan);
         break;
-    case 2:
-        cout << "Profit : ";
-        cout << Money;
+    case 2: //view profit
+        cout << "Profit : " << Money << endl;
+        Menu();
         break;
-    case 3:
+    case 3: //restock
         do {
-        viewStock();
-        cin >> pilihan;
+            do {
+                viewStock();
+                cin >> pilihan;
+                if (pilihan < 0 || pilihan > MAX) cout << "Invalid\n"; //countermeasure
+            } while (pilihan < 0 || pilihan > MAX);
         Restock(pilihan);
         } while (pilihan != 0);
         break;
     default:
-        cout << "invalid menu";
+        cout << "invalid menu" << endl;
         Menu();
         break;
     }
-    saveFile("Stock.txt");
-    saveFile("Profit.txt");
-    Menu();
+    ofstream profit ("Profit.txt"), stock ("Stock.txt"); //save data after each menu
+    profit << Money;
+    profit.close();
+    for (int i = 0; i < MAX; i++) {
+        stock << Item[i].Nama << endl << Item[i].Jumlah << endl;
+    }
+    stock.close();
+    Menu(); //recursive
 }
 // main function
 int main() {
@@ -106,7 +108,7 @@ int main() {
     string Nama_Item, Jumlah;
     profit.open("Profit.txt");
     profit >> Money; //get the line for MONEYYYYYY
-    profit.close();  //dont forget to close file
+    profit.close();
     stock.open("Stock.txt");  
     for (int i = 0; i < MAX; i++) {
         getline(stock, Nama_Item);//format Stock.txt = Nama Item\n 
@@ -114,10 +116,10 @@ int main() {
         Item[i].Nama = Nama_Item;
         Item[i].Jumlah = stoi(Jumlah);
     }
-    stock.close(); //dont forget to close file
+    stock.close();
 
     Menu();
 
-    //give exit message
+                //give exit message
     
 }
