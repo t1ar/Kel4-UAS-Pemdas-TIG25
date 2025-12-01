@@ -58,7 +58,7 @@ void StockPilih(){ //data is stored in struct not file remember, oh and at the b
                         //                       2 left   4 left   3 left  kinda like an actual vending machine
                                                
 
-    do {
+    do { //pilih
         cin >> pilihan;
         if (pilihan < 0 || pilihan > MAX) cout << "\nInvalid\n"; //countermeasure
     } while (pilihan < 0 || pilihan > MAX);
