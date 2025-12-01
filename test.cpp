@@ -2,8 +2,8 @@
 // Kel7
 // TI-G
 
-#include <iostream>
-#include <fstream> // ubah oi ubahhhh
+#include <iostream> //bla bla bla this is for testing merge files
+#include <fstream>
 #include <string>
 using namespace std;
 
@@ -105,3 +105,7 @@ int main() {
 
 
 
+    //dont forget to close file
+    profit.close();
+    stock.close();
+}
