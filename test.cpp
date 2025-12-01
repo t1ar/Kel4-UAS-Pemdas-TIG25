@@ -2,8 +2,8 @@
 // Kel7
 // TI-G
 
-#include <iostream> //bla bla bla this is for testing merge files
-#include <fstream>
+#include <iostream>
+#include <fstream> // ubah oi ubahhhh
 #include <string>
 using namespace std;
 
@@ -13,7 +13,7 @@ const int MAX = 9,
           Harga_Buyer [MAX] = {},
           Harga_Stock [MAX] = {};
 
-int Wallet = 20000; 
+int Wallet = 20000; //buyer's wallet
 int Money;   // Mr. Krabs : Money! | global var 
 
 // declare struct
@@ -26,10 +26,26 @@ struct structItem {
 // declare functions
 void saveFile(string filename){
 
+
+
+    
 }
 
-void Restock(int pilihan) {
-    pilihan--;
+void viewStock(){ //data is stored in struct not file remember, oh and at the bottom give the line "0. Exit" 
+                 
+    
+
+
+    cout << "\nPilih barang : "; //use this at the end of funct
+}
+
+void Restock(int pilihan) { //specific number of restock
+    if (pilihan == 0) return;
+    pilihan--; //due to how array works
+
+
+
+
 }
 
 void Beli(int pilihan) {
@@ -59,15 +75,20 @@ void Menu() {
         return;
         break;
     case 1:
+        viewStock();
         cin >> pilihan;
         Beli(pilihan);
         break;
     case 2:
+        cout << "Profit : ";
         cout << Money;
         break;
     case 3:
+        do {
+        viewStock();
         cin >> pilihan;
         Restock(pilihan);
+        } while (pilihan != 0);
         break;
     default:
         cout << "invalid menu";
@@ -99,13 +120,4 @@ int main() {
 
     //give exit message
     
-}
-
-
-
-
-
-    //dont forget to close file
-    profit.close();
-    stock.close();
 }
