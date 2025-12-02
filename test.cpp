@@ -21,8 +21,9 @@ struct structItem {
 } Item[MAX]; 
 
 // declare functions
-void Restock(int pilihan) { //specific number of restock
-    if (pilihan == 0) return;
+void Restock(int pilihan) 
+{ //specific number of restock
+    if (pilihan == 0) return; //in case of exit
     pilihan--; //due to how array works
 
 
