@@ -3,7 +3,7 @@
 // TI-G
 
 #include <iostream>
-#include <fstream> // ubah oi ubahhhh
+#include <fstream>
 #include <string>
 using namespace std;
 
@@ -58,15 +58,17 @@ void StockPilih(){ //data is stored in struct not file remember, oh and at the b
                         //                       2 left   4 left   3 left  kinda like an actual vending machine
                                                
 
+    
+    cout << "\n0.Exit";
     do { //pilih
+        cout << "\nPilih barang : ";
         cin >> pilihan;
         if (pilihan < 0 || pilihan > MAX) cout << "\nInvalid\n"; //countermeasure
     } while (pilihan < 0 || pilihan > MAX);
-    cout << "\n0.Exit\nPilih barang : "; //use this at the end of funct
 }
 
 void Menu() {
-                 //entry message
+                 //give entry message
                  //user's wallet
 
 
@@ -77,6 +79,7 @@ void Menu() {
         return;
         break;
     case 1: //buy
+                    //give entry message
         StockPilih();
         Beli(pilihan);
         break;
@@ -86,6 +89,7 @@ void Menu() {
         break;
     case 3: //restock
         do {
+                    //give entry message
             StockPilih();
             Restock(pilihan);
         } while (pilihan != 0);
