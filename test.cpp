@@ -101,7 +101,7 @@ void StockPilih(structItem arr[]){ //data is stored in struct not file remember,
     }
                                                
 
-    
+
     cout << "\n0.Exit";
     do { //pilih
         cout << "\nPilih barang : ";
