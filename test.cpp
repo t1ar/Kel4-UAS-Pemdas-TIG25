@@ -13,25 +13,14 @@ const int MAX = 9,
           Harga_Stock [MAX] = {};
 int Wallet = 20000;    //buyer's wallet
 int Money, pilihan;   // Mr. Krabs : Money! | global var 
+string Nama_Item, Jumlah, Harga;
 
 // declare struct
 struct structItem { 
     string Nama;
     int Jumlah;
+    int Harga;
 } Item[MAX], Storage[MAX]; //item dalam vending, storage dalam warehouse
-
-// Each vending "line" (row) contains a fixed number of items (PER_LINE)
-// Limit the vending layout to at most 3 lines (rows). If MAX grows, we still only show up to MAX_LINES rows.
-const int PER_LINE = 3;                      // items per line (3 columns)
-const int MAX_LINES = 3;                     // maximum number of rows to display
-const int NUM_LINES = (MAX / PER_LINE <= MAX_LINES) ? (MAX / PER_LINE) : MAX_LINES;        // how many lines/rows we will actually use
-const int EFFECTIVE_MAX = NUM_LINES * PER_LINE; // maximum selectable item index (1-based)
-
-struct line {
-    structItem* Item[PER_LINE];
-};
-
-line Lines[NUM_LINES];
 
 void BuyStock(int pilihan) {
     if (pilihan == 0) return; //in case of exit
@@ -87,26 +76,26 @@ void Beli(int pilihan) { //buy 1 item
         cout << "No stock.\n\n";
         return;
     }
-    if (Wallet < Harga_Buyer[pilihan]){
+    if (Wallet < Item[pilihan].Harga){
         cout << "Not enough money.\n\n";
         return;
     }
     Item[pilihan].Jumlah--;
-    Wallet -= Harga_Buyer[pilihan];
+    Wallet -= Item[pilihan].Harga;
     cout << "Transaction completed.\nCurrent balance : " << Wallet;
 }
 
-void StockPilih(){ //data is stored in struct not file remember, oh and at the bottom give the line "0. Exit" ;
+void StockPilih(structItem arr[]){ //data is stored in struct not file remember, oh and at the bottom give the line "0. Exit" ;
     cout << "\n=== STOCK ===\n";
-    for (int l = 0; l < MAX; ++l) {
+    for (int l = 0; l < MAX; l += 3) {
         // print names with index
-        for (int j = l; j < l + 3; ++j) {
-            cout << "[" << j << "] " << Item[j].Nama << "\t";
+        for (int j = l; j < (l + 3); ++j) {
+            cout << "[" << j + 1 << "] " << arr[j].Nama << "\t" ;
         }
         cout << '\n';
         // print quantities
-        for (int j = l; j < l + 3; ++j) {
-            cout << "   " << Item[j].Jumlah << " left\t";
+        for (int j = l; j < (l + 3); ++j) {
+            cout << arr[j].Jumlah << " left\t\t\t";
         }
         cout << "\n\n";
     }
@@ -134,7 +123,7 @@ void Menu() {
         break;
     case 1: //buy
                     //give entry message
-        StockPilih();
+        StockPilih(Item);
         Beli(pilihan);
         break;
     case 2: //view profit
@@ -143,11 +132,13 @@ void Menu() {
         break;
     case 3: //buystock
                 //give entry message
-        
+        StockPilih(Storage);
+
+        break;
     case 4: //restock
         do {
                     //give entry message
-            StockPilih();
+            StockPilih(Item);
             Restock(pilihan);
         } while (pilihan != 0);
         break;
@@ -157,40 +148,42 @@ void Menu() {
         Menu();
         break;
     }
+    //save file
     ofstream profit ("Profit.txt"), stock ("Stock.txt"), warehouse ("Storage.txt"); //save data after each menu
     profit << Money;
     profit.close();
     for (int i = 0; i < MAX; i++) {
-        stock << Item[i].Nama << endl << Item[i].Jumlah << endl;
+        stock << Item[i].Nama << endl << Item[i].Jumlah << endl << Item[i].Harga << endl;
     }
     stock.close();
     for (int i = 0; i < MAX; i++) {
-        warehouse << Item[i].Nama << endl << Item[i].Jumlah << endl;
+        warehouse << Storage[i].Nama << endl << Storage[i].Jumlah << endl << Storage[i].Harga << endl;
     }
     warehouse.close();
     Menu(); //recursive
 }
+
+void read(structItem arr[], ifstream &yap) {
+    for (int i = 0; i < MAX; i++) {
+        getline(yap, Nama_Item);//format .txt    =   Nama Item\n 
+        getline(yap, Jumlah);   //                   Jumlah\n
+        getline(yap, Harga);    //                   Harga\n
+        arr[i].Nama = Nama_Item;
+        arr[i].Jumlah = stoi(Jumlah);
+        arr[i].Harga = stoi(Harga);
+    }
+}
+
 // main function
 int main() {
-    // initialize data from file, Money for profit, structItem for stock,
-    ifstream profit ("Profit.txt"), stock ("Stock.txt"), warehouse ("Storage.txt");
-    string Nama_Item, Jumlah;
+    ifstream profit ("Profit.txt"), stock ("Stock.txt"), warehouse ("Storage.txt"); // initialize data from file, Money for profit, structItem for stock,
     profit >> Money; //get the line for MONEYYYYYY
     profit.close();
-    for (int i = 0; i < MAX; i++) {
-        getline(stock, Nama_Item);//format Stock.txt = Nama Item\n 
-        getline(stock, Jumlah);   //                   Jumlah
-        Item[i].Nama = Nama_Item;
-        Item[i].Jumlah = stoi(Jumlah);
-    }
+    read(Item, stock);
     stock.close();
-    for (int i = 0; i < MAX; i++) {
-        getline(warehouse, Nama_Item);//format Warehouse.txt = Nama Item\n 
-        getline(warehouse, Jumlah);   //                   Jumlah
-        Storage[i].Nama = Nama_Item;
-        Storage[i].Jumlah = stoi(Jumlah);
-    }
+    read(Storage, warehouse);
     warehouse.close();
+    
     Menu();
 
                 //give exit message

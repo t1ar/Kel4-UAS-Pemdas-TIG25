@@ -1,18 +1,27 @@
-This is line 1
-123
-This is line 2
-12345
-This is line 3
-123456
-This is line 4
-123457
-This is line 5
-12334
-This is line 6
-12345
-This is line 7
-1233
-This is line 8
-12345
-This is line 9
-1234
+Mineral Water
+10
+1500
+Some Juice   
+10
+2000
+Canned Coffee
+10
+3000
+Soda         
+10
+3000
+Milk         
+10
+3000
+Tea          
+10
+3000
+Energy Drink 
+10
+3000
+Lemonz       
+10
+3000
+AirDoa       
+10
+3000

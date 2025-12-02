@@ -1,18 +1,27 @@
 Mineral Water
 5
-Some Juice
+1
+Some Juice   
 5
-CupofCoffee
+1
+Canned Coffee
 5
-Soda
+1
+Soda         
 5
-Milk
+1
+Milk         
 5
-Tea
+1
+Tea          
 5
-This is line 7
+1
+Energy Drink 
 5
-This is licolatene 8
+1
+Lemonz       
 5
-this is line 9
+1
+AirDoa
 5
+1
