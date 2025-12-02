@@ -1,18 +1,18 @@
-This is line 1
-123
-This is line 2
-12345
-This is line 3
-123456
-This is line 4
-123457
-This is line 5
-12334
-This is line 6
-12345
+Mineral Water
+5
+Some Juice
+5
+CupofCoffee
+5
+Soda
+5
+Milk
+5
+Tea
+5
 This is line 7
-1233
-This is line 8
-12345
-This is line 9
-1234
+5
+This is licolatene 8
+5
+this is line 9
+5
