@@ -67,11 +67,11 @@ void Beli(int pilihan) { //buy 1 item
     if (pilihan == 0) return;
     pilihan--; //due to how array works
     if (Item[pilihan].Jumlah == 0){
-        cout << "No stock.\n\n";
+        cout << "\nNo stock.";
         return;
     }
     if (Wallet < Item[pilihan].Harga){
-        cout << "Not enough money.\n\n";
+        cout << "\nNot enough money.";
         return;
     }
     Item[pilihan].Jumlah--;

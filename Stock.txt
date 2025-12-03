@@ -5,7 +5,7 @@ Some Juice
 4
 4500
 Canned Coffee
-5
+4
 7000
 Soda         
 5
