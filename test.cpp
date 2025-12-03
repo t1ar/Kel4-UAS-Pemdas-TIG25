@@ -125,9 +125,8 @@ Welcome to []'s Vending machine
 What do you want to do? : )";             
     cin >> pilihan;
     switch (pilihan) {
-    case 0: //exit
+    case 0: //exit sometime doesnt work idk why
         return;
-        break;
     case 1: //buy
         cout << "\n=== Vending Machine ===\n";
         StockView(Item, 'y');
@@ -136,7 +135,7 @@ What do you want to do? : )";
         Beli(pilihan);
         break;
     case 2: //view profit
-        cout << "Vending Machine's Profit : Rp." << Money << endl;
+        cout << "\n\nVending Machine's Profit : Rp." << Money << endl;
         Menu();
         break;
     case 3: //buystock
@@ -149,10 +148,10 @@ What do you want to do? : )";
     case 4: //restock
         do {
             cout << "\n=== Storage ===\n";
-            StockView(Storage, 'n');
+            StockView(Storage, 'n'); // 'n' for not display prices
             cout << "\n=== Vending Machine ===\n";
             StockView(Item, 'n');
-            cout << "[0] Exit\n\n";
+            cout << "[0] Exit";
             Pilih();
             Restock(pilihan);
         } while (pilihan != 0);

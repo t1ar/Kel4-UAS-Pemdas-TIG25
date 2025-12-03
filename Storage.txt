@@ -2,7 +2,7 @@ Mineral Water
 10
 1500
 Some Juice   
-10
+9
 3000
 Canned Coffee
 10
