@@ -117,7 +117,9 @@ void Menu() {
     2. View Profit
     3. Buy stock
     4. Restock
-    0. Exit)";             
+    0. Exit
+
+What do you want to do? : )";             
     cin >> pilihan;
     switch (pilihan) {
     case 0: //exit
