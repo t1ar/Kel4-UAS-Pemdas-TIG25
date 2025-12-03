@@ -2,7 +2,7 @@
 // Kel7
 // TI-G
 
-#include <iostream> // test commit
+#include <iostream> // library
 #include <fstream>
 #include <string>
 using namespace std;
@@ -20,6 +20,7 @@ struct structItem {
     int Harga;
 } Item[MAX], Storage[MAX]; //item dalam vending, storage dalam warehouse
 
+// declare functions
 void BuyStock(int pilihan) {
     if (pilihan == 0) return; //in case of exit
     pilihan--; //due to how array works
@@ -33,7 +34,6 @@ void BuyStock(int pilihan) {
     cout << "Restock completed.\nCurrent balance : " << Money;
 }
 
-// declare functions
 void Restock(int pilihan) { // specific number of restock
     if (pilihan == 0) return; //in case of exit
     pilihan--; //due to how array works
@@ -80,7 +80,6 @@ void Beli(int pilihan) { //buy 1 item
 }
 
 void StockView(structItem arr[], char confirm){ //data is stored in struct not file, also needs confirmation whether u want to display price or not
-    cout << "\n=== STOCK ===\n";
     for (int l = 0; l < MAX; l += 3) {
         // print names with index
         for (int j = l; j < (l + 3); ++j) {
@@ -102,27 +101,30 @@ void StockView(structItem arr[], char confirm){ //data is stored in struct not f
 }                                        
 
 void Pilih() {
-    cout << "\n0.Exit";
+    cout << "0.Exit\n\n";
     do { //pilih
-        cout << "\nPilih barang : ";
+        cout << "Pilih barang : ";
         cin >> pilihan;
         if (pilihan < 0 || pilihan > MAX) cout << "\nInvalid\n"; //countermeasure
     } while (pilihan < 0 || pilihan > MAX);
 }
 
 void Menu() {
-                 //give entry message
-                 //user's wallet
-
-
+    cout << 
+    R"(Welcome to []'s Vending machine
+    
+    1. Buy item
+    2. View Profit
+    3. Buy stock
+    4. Restock
+    0. Exit)";             
     cin >> pilihan;
-    switch (pilihan)
-    {
+    switch (pilihan) {
     case 0: //exit
         return;
         break;
     case 1: //buy
-                    //give entry message
+        cout << "\n=== Vending Machine ===\n";
         StockView(Item, 'y');
         Pilih();
         Beli(pilihan);
@@ -132,15 +134,16 @@ void Menu() {
         Menu();
         break;
     case 3: //buystock
-                //give entry message
+        cout << "\n=== Storage ===\n";
         StockView(Storage, 'y');
         Pilih();
 
         break;
     case 4: //restock
         do {
-                    //give entry message
+            cout << "\n=== Storage ===\n";
             StockView(Storage, 'n');
+            cout << "\n=== Vending Machine ===\n";
             StockView(Item, 'n');
             Pilih();
             Restock(pilihan);
@@ -152,8 +155,8 @@ void Menu() {
         Menu();
         break;
     }
-    //save file
-    ofstream profit ("Profit.txt"), stock ("Stock.txt"), warehouse ("Storage.txt"); //save data after each menu
+    //save file after each menu
+    ofstream profit("Profit.txt"), stock("Stock.txt"), warehouse("Storage.txt");
     profit << Money;
     profit.close();
     for (int i = 0; i < MAX; i++) {
@@ -189,7 +192,5 @@ int main() {
     warehouse.close();
     
     Menu();
-
-                //give exit message
-    
+    cout << "\nGoodbye!\n" 
 }
