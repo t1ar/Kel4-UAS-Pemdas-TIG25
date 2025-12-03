@@ -124,27 +124,31 @@ Welcome to []'s Vending machine
 
 What do you want to do? : )";             
     cin >> pilihan;
-    cout << pilihan;
+    cout << endl;
     switch (pilihan) {
     case 0: //exit sometime doesnt work idk why
         return;
     case 1: //buy
-        cout << "\n=== Vending Machine ===\n";
-        StockView(Item, 'y');
-        cout << "\n0.Exit\n\nYour balance : Rp." << Wallet;
-        Pilih();
-        Beli(pilihan);
+        do {
+            cout << "\n=== Vending Machine ===\n";
+            StockView(Item, 'y');
+            cout << "\n0.Exit\n\nYour balance : Rp." << Wallet;
+            Pilih();
+            Beli(pilihan);
+        } while (pilihan != 0);
         break;
     case 2: //view profit
         cout << "\n\nVending Machine's Profit : Rp." << Money;
         Menu();
         return;
     case 3: //buystock
-        cout << "\n=== Storage ===\n";
-        StockView(Storage, 'y');
-        cout << "[0] Exit\n\nYour balance : Rp." << Money << endl;
-        Pilih();
-        //WIP im waiting fajry
+        do {
+            cout << "\n=== Storage ===\n";
+            StockView(Storage, 'y');
+            cout << "[0] Exit\n\nYour balance : Rp." << Money << endl;
+            Pilih();
+                //WIP im waiting fajry
+        } while (pilihan != 0);
         break;
     case 4: //restock
         do {
