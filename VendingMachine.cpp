@@ -2,7 +2,7 @@
 
 #include <iostream> //basic io for terminal
 #include <fstream> //file handling for write/read
-#include <string> // TODO : i forgot what string for, pls write 
+#include <string> // TODO : i forgot what string for, pls write. for getline iirc -Helicop
 using namespace std;
 
 //global variables
