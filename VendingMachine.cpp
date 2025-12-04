@@ -82,8 +82,8 @@ void Pilih() {
     } while (pilihan < 0 || pilihan > MAX);
 }
 
-bool isValidInt(int &input) {
-    if (cin.fail()) { //check (the last cin) if input = integer
+bool isValidInt(int &input) { //set &input datatype as int
+    if (cin.fail()) { //check (the last cin). if input != int data type, then cin.fail() = true
         cin.clear(); //clear error flag
         cin.ignore(10000, '\n'); //discard invalid input
         return false; //if != integer, false
