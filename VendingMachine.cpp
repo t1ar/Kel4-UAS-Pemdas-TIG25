@@ -216,10 +216,10 @@ void BuyStorage(int pilihan) { //buy stocks for storage, need specified amount
             cout << "\nNot enough money.\n\n";
         }
     } while (Storage[pilihan].Harga * amount > profitMoney || amount <= 0);
-    if (!getConfirmation("Are you sure to buy " + amount + " unit(s) of " + Storage[pilihan].Nama + " ?")) {
+    if (!getConfirmation("Are you sure to buy " + to_string(amount) + " unit(s) of " + Storage[pilihan].Nama + " ?")) {
         cout << "\nStock purchase cancelled.\n\n";
         return;
-    }
+    }   
     Storage[pilihan].Jumlah += amount;
     profitMoney -= Storage[pilihan].Harga * amount;
     cout << "\nStock purchased.\n\nCurrent balance : Rp." << profitMoney;
