@@ -46,6 +46,7 @@ int main() {
 // TODO : CLEAN UP AND DOCUMENTATION
 
 void BuyStock(int pilihan) {
+    int amount;
     if (pilihan == 0) return; //in case of exit
     pilihan--; //due to how array works
     if (Money < Storage[pilihan].Harga){
@@ -59,10 +60,20 @@ void BuyStock(int pilihan) {
         cout << "\nStock purchase cancelled.\n\n";
         return;
     }
-    
-    Storage[pilihan].Jumlah++;
-    Money -= Storage[pilihan].Harga;
-    cout << "Stock purchased.\nCurrent balance : Rp." << Money;
+    do {
+        cout << "Select amount : ";
+        cin >> amount;
+        if (amount <= 0){
+            cout << "\nMust be greater than 0\n\n";
+            continue;
+        }
+        if (Storage[pilihan].Harga * amount > Money) {
+            cout << "\nNot enough money.\n\n";
+        }
+    } while (Storage[pilihan].Harga * amount > Money || amount <= 0);
+    Storage[pilihan].Jumlah += amount;
+    Money -= Storage[pilihan].Harga * amount;
+    cout << "\nStock purchased.\n\nCurrent balance : Rp." << Money;
 }
 
 void Restock(int pilihan) { // specific number of restock
@@ -91,7 +102,7 @@ void Restock(int pilihan) { // specific number of restock
         Storage[pilihan].Jumlah--;
         Item[pilihan].Jumlah++;           
     }
-        cout << "Restock completed.\n";
+        cout << "\nRestock completed.\n\n";
 }
 
 void Beli(int pilihan) { //buy 1 item
@@ -115,7 +126,7 @@ void Beli(int pilihan) { //buy 1 item
     Item[pilihan].Jumlah--;
     Wallet -= Item[pilihan].Harga;
     Money += Item[pilihan].Harga;
-    cout << "Transaction completed.\nCurrent balance : " << Wallet;
+    cout << "\nTransaction completed.\n\nCurrent balance : " << Wallet << endl << endl;
 }
 
 void StockView(structItem arr[], char confirm){ //data is stored in struct not file, also needs confirmation whether u want to display price or not
@@ -170,7 +181,7 @@ What do you want to do? : )";
         do {
             cout << "\n=== Vending Machine ===\n";
             StockView(Item, 'y');
-            cout << "\n0.Exit\n\nYour balance : Rp." << Wallet;
+            cout << "\n[0] Exit\n\nYour balance : Rp." << Wallet;
             Pilih();
             Beli(pilihan);
         } while (pilihan != 0);
@@ -181,7 +192,8 @@ What do you want to do? : )";
         return;
     case 3: //buystock
         do {
-            cout << "\n=== Storage ===\n";
+            cout << "\nBuying stocks simulator\n";
+            cout << "\n=== Storage  ===\n";
             StockView(Storage, 'y');
             cout << "[0] Exit\n\nYour balance : Rp." << Money << endl;
             Pilih();
@@ -190,6 +202,7 @@ What do you want to do? : )";
         break;
     case 4: //restock
         do {
+            cout << "\nRestock simulator\n";
             cout << "\n=== Storage ===\n";
             StockView(Storage, 'n'); // 'n' for not display prices
             cout << "\n=== Vending Machine ===\n";
@@ -206,7 +219,6 @@ What do you want to do? : )";
         return;
     }
     //save file after each menu
-    cout << "testes"; //debugging
     ofstream profit("Profit.txt"), stock("Stock.txt"), warehouse("Storage.txt");
     profit << Money;
     profit.close();
@@ -231,6 +243,3 @@ void read(structItem arr[], ifstream &yap) {
         arr[i].Harga = stoi(Harga);
     }
 }
-
-
-

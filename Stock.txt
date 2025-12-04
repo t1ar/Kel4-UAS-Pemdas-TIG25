@@ -1,27 +1,27 @@
 Mineral Water
 5
 2500
-Some Juice   
+Some Juice
 5
 4500
 Canned Coffee
 3
 7000
-Soda         
+Soda
 5
 6000
-Milk         
+Milk
 5
 5500
-Tea          
+Tea 
 5
 4000
-Energy Drink 
+Energy Drink
 5
 6500
-Lemonz       
+Lemonz
 5
 5000
-AirDoa       
+AirDoa
 5
 20000
