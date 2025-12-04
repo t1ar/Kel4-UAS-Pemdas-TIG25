@@ -1,5 +1,5 @@
 Mineral Water
-5
+10
 1500
 Some Juice   
 9

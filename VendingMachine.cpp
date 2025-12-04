@@ -46,16 +46,10 @@ int main() {
 // TODO : CLEAN UP AND DOCUMENTATION
 
 void BuyStock(int pilihan) {
-    if (pilihan == 0 ) return; //in case of exit
-    if (pilihan == "a" || pilihan == "b" || pilihan == "c" || pilihan == "d" || pilihan == "e" || pilihan == "f" || pilihan == "g" || pilihan == "h" || pilihan == "i" || pilihan == "j" || pilihan == "k" || pilihan == "l" || pilihan == "m" || pilihan == "n" || pilihan == "o" || pilihan == "p" || pilihan == "q" || pilihan == "r" || pilihan == "s" || pilihan == "t" || pilihan == "u" || pilihan == "v" || pilihan == "w" || pilihan == "x" || pilihan == "y" || pilihan == "z") {
-        cout << "\nInvalid input.\n\n";
-        system("pause");
-        BuyStock(pilihan);
-    }
+    if (pilihan == 0) return; //in case of exit
     pilihan--; //due to how array works
     if (Money < Storage[pilihan].Harga){
         cout << "Not enough money.\n\n";
-        system("pause");
         return;
     }
     cout << "Are you sure to buy " << Storage[pilihan].Nama << " stock? (y/n) : ";
@@ -63,14 +57,12 @@ void BuyStock(int pilihan) {
     cin >> confirm;
     if (confirm != 'y' && confirm != 'Y') {
         cout << "\nStock purchase cancelled.\n\n";
-        system("pause");
         return;
     }
     
     Storage[pilihan].Jumlah++;
     Money -= Storage[pilihan].Harga;
-    cout << "Stock purchased.\nCurrent balance : Rp." << Money << endl;
-    system("pause");
+    cout << "Stock purchased.\nCurrent balance : Rp." << Money;
 }
 
 void Restock(int pilihan) { // specific number of restock
@@ -81,43 +73,36 @@ void Restock(int pilihan) { // specific number of restock
     cin >> confirm;
     if (confirm != 'y' && confirm != 'Y') {
         cout << "\nRestock cancelled.\n\n";
-        system("pause");
         return;
     } //fajri, the nested-if fangirl
     if (Storage[pilihan].Nama != Item[pilihan].Nama) { //jri klo barangnya udah pasti sama, ga perlu di looping ber kali" dalam forloop
         cout << "\nNot matching in warehouse.\n\n";
-        system("pause");
         return;
     }
     if (Item[pilihan].Jumlah == 5) { //check first, add later. in case vending machinenya udah penuh dari awal
         cout << "\nVending machine full.\n\n";
-        system("pause");
         return;
     }  
     while (Item[pilihan].Jumlah < 5) {      
-        if (Storage[pilihan].Jumlah <= 0) { 
+        if (Storage[pilihan].Jumlah == 0) { 
             cout << "\nOut of stock.\n\n";
-            system("pause");
             return;
         };
         Storage[pilihan].Jumlah--;
         Item[pilihan].Jumlah++;           
     }
         cout << "Restock completed.\n";
-        system("pause");
 }
 
 void Beli(int pilihan) { //buy 1 item
     if (pilihan == 0) return;
     pilihan--; //due to how array works
     if (Item[pilihan].Jumlah == 0){
-        cout << "\nNo stock.\n\n";
-        system("pause");
+        cout << "\nNo stock.";
         return;
     }
     if (Wallet < Item[pilihan].Harga){
-        cout << "\nNot enough money.\n\n";
-        system("pause");
+        cout << "\nNot enough money.";
         return;
     }
     cout << "Are you sure to buy " << Item[pilihan].Nama << "? (y/n) : ";
@@ -125,14 +110,12 @@ void Beli(int pilihan) { //buy 1 item
     cin >> confirm;
     if (confirm != 'y' && confirm != 'Y') {
         cout << "\nPurchase cancelled.\n\n";
-        system("pause");
         return;
     }
     Item[pilihan].Jumlah--;
     Wallet -= Item[pilihan].Harga;
     Money += Item[pilihan].Harga;
-    cout << "Transaction completed.\nCurrent balance : " << Wallet << endl;
-    system("pause");
+    cout << "Transaction completed.\nCurrent balance : " << Wallet;
 }
 
 void StockView(structItem arr[], char confirm){ //data is stored in struct not file, also needs confirmation whether u want to display price or not
@@ -193,8 +176,7 @@ What do you want to do? : )";
         } while (pilihan != 0);
         break;
     case 2: //view profit
-        cout << "\n\nVending Machine's Profit : Rp." << Money << endl;
-        system("pause");
+        cout << "\n\nVending Machine's Profit : Rp." << Money;
         Menu();
         return;
     case 3: //buystock
