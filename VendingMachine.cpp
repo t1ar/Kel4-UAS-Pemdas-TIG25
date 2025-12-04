@@ -133,7 +133,7 @@ void StockView(structItem arr[], char confirm){ //data is stored in struct not f
     for (int l = 0; l < MAX; l += 3) {
         // print names with index
         for (int j = l; j < (l + 3); ++j) {
-            cout << "[" << j + 1 << "] " << arr[j].Nama << "\t\t" ;
+            cout << "[" << j + 1 << "] " << arr[j].Nama << "\t\t\t" ;
         }
         cout << '\n';
         // print quantities
@@ -148,7 +148,7 @@ void StockView(structItem arr[], char confirm){ //data is stored in struct not f
         }
         cout << "\n\n";
     }
-}                                        
+}                                                        
 
 void Pilih() {
     do { //pilih
