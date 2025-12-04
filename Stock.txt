@@ -7,7 +7,7 @@ Some Juice
 Canned Coffee
 3
 7000
-Soda
+Sparkling Soda
 5
 6000
 Milk
