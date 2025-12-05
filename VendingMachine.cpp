@@ -1,5 +1,13 @@
-//TODO : BUGFIX AND CLEAN UP
-
+/* 
+VENDING MACHINE SIMULATOR
+CREATED BY LIFESTREAM
+KELOMPOK 7 TIG PEMDAS
+MEMBER:
+-NIKOLAS TIAR BANJARNAHOR (25051204056)
+-HABIBI
+-MUHAMMAD NUR FAJRI
+-HAZQI
+*/
 #include <iostream> //basic io for terminal
 #include <fstream> //file handling for write/read
 #include <string> //getline and string handling
@@ -45,7 +53,6 @@ int main() {
     cout << "\nGoodbye!\n"; //After Exiting menu, give Exit messages
 }
 
-// TODO : CLEAN UP AND DOCUMENTATION
 //Function definitions
 //Backend stuff                                               data type 'struct' name ~~~~~v         v~~~~~ struct call variable
 void read(ifstream &yap, structItem arr[]) { //Read the content of Stock / Storage .txt, structItem arr[] | ifstream &yap
