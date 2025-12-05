@@ -29,12 +29,12 @@ void Menu();    //Usable
 void BuyVending(int pilihan);
 void BuyStorage(int pilihan);
 void Restock(int pilihan);
-void StockView(structItem arr[], char confirm);
 
 void read(ifstream &yap, structItem arr[]); //Technical 
 bool getConfirmation(string message);
 void Pilih();
 bool isValidInt(int &input);
+void StockView(structItem arr[], char confirm);
 
 //main program
 int main() {
