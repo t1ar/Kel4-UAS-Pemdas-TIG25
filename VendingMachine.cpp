@@ -6,7 +6,7 @@ MEMBER:
 -NIKOLAS TIAR BANJARNAHOR (25051204056)
 -HABIBI (25051204058)
 -MUHAMMAD NUR FAJRI (25051204016)
--HAZQI
+-HAZQI SYAUQIE ATALLAH SUSANTO (25051204010)
 */
 #include <iostream> //basic io for terminal
 #include <fstream> //file handling for write/read
