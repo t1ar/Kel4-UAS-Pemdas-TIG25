@@ -20,8 +20,8 @@ Energy Drink
 10
 4000
 Lemonz
-10
+6
 3000
 AirDoa
-11
+9
 1000
