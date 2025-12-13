@@ -260,7 +260,7 @@ void Restock(int pilihan) { // specific number of restock
         cout << "\nNot matching in warehouse.\n\n";
         return;
     }
-    if (Vending[pilihan].Jumlah == 5) { //check first, add later. in case vending machine already full from the start
+    if (Vending[pilihan].Jumlah >= 5) { //check first, add later. in case vending machine already full from the start
         cout << "\nVending machine full.\n\n";
         return;
     }  

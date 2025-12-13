@@ -8,10 +8,10 @@ Canned Coffee
 10
 5000
 Sparkling Soda
-9
+8
 4000
 Milk
-10
+9
 3000
 Tea 
 10
